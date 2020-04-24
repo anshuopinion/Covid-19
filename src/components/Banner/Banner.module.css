@@ -1,0 +1,28 @@
+.container {
+  flex-direction: column;
+  display: flex;
+}
+
+.flag {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: red 1px dotted;
+}
+.flag h4 {
+  justify-self: center;
+  font-family: "Lucida Sans Regular", "Lucida Grande", Geneva, Verdana,
+    sans-serif;
+  background-color: #a5f1acb9;
+  padding: 0.12rem 0.35rem;
+}
+
+.flag img {
+  margin: 10px;
+  width: auto;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.covidBanner img {
+  width: 100%;
+}
