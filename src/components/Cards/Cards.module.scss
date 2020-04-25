@@ -1,0 +1,121 @@
+$Infected: rgba(0, 0, 255, 0.5);
+$InfectedDark: rgba(0, 0, 255, 1);
+$Active: rgba(255, 145, 0, 0.5);
+$ActiveDark: rgba(255, 145, 0, 1);
+$Recovered: rgba(0, 255, 0, 0.5);
+$RecoveredDark: rgba(0, 255, 0, 1);
+$Deaths: rgba(255, 0, 0, 0.5);
+$DeathsDark: rgba(255, 0, 0, 1);
+
+:root {
+  font-size: 62.5%;
+}
+
+.container {
+  .mainGrid {
+    margin-top: 3rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 23rem);
+    grid-row-gap: 2rem;
+    grid-column-gap: 2rem;
+    .card {
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+      &:hover {
+        transform: scale(1.1);
+        overflow: hidden;
+        transition: 500ms;
+      }
+      .cardContent {
+        .cardName {
+          font-family: "Bangers", cursive;
+          font-size: 2rem;
+        }
+        .counter {
+          font-size: 1.5rem;
+        }
+
+        h4 {
+          text-align: center;
+        }
+      }
+    }
+  }
+  @media (max-width: 1010px) {
+    font-size: 55%;
+    .mainGrid {
+      grid-template-columns: repeat(4, 18rem);
+    }
+  }
+  @media (max-width: 808px) {
+    font-size: 50%;
+    .mainGrid {
+      grid-template-columns: repeat(4, 15rem);
+    }
+  }
+  @media (max-width: 750px) {
+    font-size: 50%;
+    .mainGrid {
+      grid-template-columns: repeat(2, 22rem);
+    }
+  }
+  @media (max-width: 480px) {
+    font-size: 50%;
+    .mainGrid {
+      grid-template-columns: repeat(1, 22rem);
+    }
+  }
+}
+.infectedColor {
+  color: $Infected;
+}
+.deathsColor {
+  color: $Deaths;
+}
+.recoveredColor {
+  color: $Recovered;
+}
+.activeColor {
+  color: $Active;
+}
+.active {
+  box-shadow: 0 4px 8px 0 $Active, 0 6px 20px 0 $Active;
+  &:hover {
+    box-shadow: 0 4px 8px 0 $ActiveDark, 0 6px 20px 0 $ActiveDark;
+  }
+
+  .counter {
+    color: $Active;
+  }
+}
+.infected {
+  box-shadow: 0 4px 8px 0 $Infected, 0 6px 20px 0 $Infected;
+  &:hover {
+    box-shadow: 0 4px 8px 0 $InfectedDark, 0 6px 20px 0 $InfectedDark;
+  }
+
+  .counter {
+    color: $Infected;
+  }
+}
+.deaths {
+  box-shadow: 0 4px 8px 0 $Deaths, 0 6px 20px 0 $Deaths;
+  &:hover {
+    box-shadow: 0 4px 8px 0 $DeathsDark, 0 6px 20px 0 $DeathsDark;
+  }
+
+  .counter {
+    color: $Deaths;
+  }
+}
+.recovered {
+  box-shadow: 0 4px 8px 0 $Recovered, 0 6px 20px 0 $Recovered;
+  &:hover {
+    box-shadow: 0 4px 8px 0 $RecoveredDark, 0 6px 20px 0 $RecoveredDark;
+  }
+
+  .counter {
+    color: $Recovered;
+  }
+}

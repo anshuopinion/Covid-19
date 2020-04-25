@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NativeSelect, FormControl } from "@material-ui/core";
-import styles from "./Spicker.module.css";
+// import { NativeSelect, FormControl } from "@material-ui/core";
+import styles from "./Spicker.module.scss";
 import { fetchStates } from "../../api";
 
 const Spicker = ({ handleStateChange }) => {
@@ -12,8 +12,10 @@ const Spicker = ({ handleStateChange }) => {
     fetchAPI();
   }, [setFetchedStates]);
   return (
-    <FormControl className="styles.formControl">
-      <NativeSelect
+    <div className={styles.selectorContainer}>
+      <h3>Select State</h3>
+      <select
+        className={styles.selectState}
         defaultValue=""
         onChange={(e) => handleStateChange(e.target.value)}
       >
@@ -31,8 +33,8 @@ const Spicker = ({ handleStateChange }) => {
             {stateData.stateName}
           </option>
         ))}
-      </NativeSelect>
-    </FormControl>
+      </select>
+    </div>
   );
 };
 export default Spicker;

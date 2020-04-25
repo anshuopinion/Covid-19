@@ -1,0 +1,47 @@
+$selector: rgb(54, 54, 54);
+$selectorDark: #000;
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: block;
+  margin: 2rem 0;
+  padding: 1rem 10rem 1rem 1rem;
+  background: url(../../images/selector.png) no-repeat 95% center;
+  background-size: 3rem;
+  color: #000;
+  border-radius: 0.4rem;
+  border: 0.2rem solid #000;
+  width: 55rem;
+}
+
+.selectorContainer {
+  display: flex;
+  flex-direction: column;
+  h3 {
+    font-size: 1.6rem;
+    justify-content: center;
+  }
+  margin-top: 10px;
+  margin: auto auto;
+  .selectState {
+    box-shadow: 0 0.4rem 0.8rem 0 $selector, 0 0.6rem 2rem 0 $selector;
+    &:hover {
+      box-shadow: 0 0.4rem 0.8rem 0 $selectorDark, 0 0.6rem 2rem 0 $selectorDark;
+    }
+  }
+}
+@media (max-width: 600px) {
+  select {
+    width: 30rem;
+  }
+}
+
+@media (max-width: 420px) {
+  select {
+    width: 22rem;
+  }
+}
