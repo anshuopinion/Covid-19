@@ -11,6 +11,7 @@ const Spicker = ({ handleStateChange }) => {
     };
     fetchAPI();
   }, [setFetchedStates]);
+
   return (
     <div className={styles.selectorContainer}>
       <h3>Select State</h3>
@@ -20,19 +21,26 @@ const Spicker = ({ handleStateChange }) => {
         onChange={(e) => handleStateChange(e.target.value)}
       >
         <option value="">India</option>
-        {fetchedStates.map((stateData, i) => (
-          <option
-            key={i}
-            value={[
-              stateData.stateName,
-              stateData.confirmed,
-              stateData.recovered,
-              stateData.deaths,
-            ]}
-          >
-            {stateData.stateName}
-          </option>
-        ))}
+        {fetchedStates
+          .sort((a, b) => {
+            if (a.stateName.toLowerCase() < b.stateName.toLowerCase())
+              return -1;
+            if (a.stateName.toLowerCase() > b.stateName.toLowerCase()) return 1;
+            return 0;
+          })
+          .map((stateData, i) => (
+            <option
+              key={i}
+              value={[
+                stateData.stateName,
+                stateData.confirmed,
+                stateData.recovered,
+                stateData.deaths,
+              ]}
+            >
+              {stateData.stateName}
+            </option>
+          ))}
       </select>
     </div>
   );

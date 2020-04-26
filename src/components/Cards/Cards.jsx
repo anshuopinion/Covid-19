@@ -50,8 +50,8 @@ const Cards = ({
     return (
       <div className={styles.container}>
         <div className={styles.mainGrid}>
-          {cardData.map((card) => (
-            <div className={cx(styles.card, card.styleBorder)}>
+          {cardData.map((card, id) => (
+            <div className={cx(styles.card, card.styleBorder)} key={id}>
               <div className={styles.cardContent}>
                 <h4 className={styles.cardName}>{card.cardName}</h4>
                 <h4 className={styles.counter}>
