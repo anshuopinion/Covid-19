@@ -36,6 +36,9 @@ const Spicker = ({ handleStateChange }) => {
                 stateData.confirmed,
                 stateData.recovered,
                 stateData.deaths,
+                stateData.dailyconfirmed,
+                stateData.dailydeaths,
+                stateData.dailyrecovered,
               ]}
             >
               {stateData.stateName}

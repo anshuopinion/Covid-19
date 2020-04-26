@@ -1,0 +1,33 @@
+.container {
+  flex-direction: column;
+  display: flex;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: red 1px dotted;
+
+  .tracker {
+    background-color: rgb(119, 112, 112);
+    color: #fff;
+    padding: 0 5px;
+    margin-bottom: 5px;
+    h4 {
+      justify-self: center;
+      font-family: "Lucida Grande", Geneva, Verdana, sans-serif;
+      margin-top: 2rem;
+    }
+  }
+
+  img {
+    margin: 10px;
+    width: auto;
+    height: 35px;
+    margin-right: 10px;
+  }
+}
+
+.covidBanner {
+  transform: scale(1.7);
+}

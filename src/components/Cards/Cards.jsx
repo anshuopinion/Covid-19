@@ -5,7 +5,15 @@ import CountUp from "react-countup";
 import cx from "classnames";
 
 const Cards = ({
-  data: { date, totalconfirmed, totaldeceased, totalrecovered },
+  data: {
+    date,
+    totalconfirmed,
+    totaldeceased,
+    totalrecovered,
+    dailyconfirmed,
+    dailyrecovered,
+    dailydeceased,
+  },
 }) => {
   // Cards Data array
   const totalactive =
@@ -14,31 +22,31 @@ const Cards = ({
   const cardData = [
     {
       cardName: "Confirmed",
+      daily: dailyconfirmed,
       count: parseInt(totalconfirmed),
       date: `${date} 2020`,
-      para: "No. of Confirmed cases of covid-19 ",
       styleCard: styles.card,
       styleColor: styles.infectedColor,
       styleBorder: styles.infected,
     },
     {
       cardName: "Active",
+      daily: dailyconfirmed - dailyrecovered - dailydeceased,
       count: totalactive,
-      para: "No. of Active cases of covid-19 ",
       styleColor: styles.activeColor,
       styleBorder: styles.active,
     },
     {
       cardName: "Recovered",
+      daily: parseInt(dailyrecovered),
       count: parseInt(totalrecovered),
-      para: "No.  of  recoveries from covid-19 ",
       styleColor: styles.recoveredColor,
       styleBorder: styles.recovered,
     },
     {
       cardName: "Deaths",
+      daily: parseInt(dailydeceased),
       count: parseInt(totaldeceased),
-      para: "No.  of  deaths from covid-19 ",
       styleColor: styles.deathsColor,
       styleBorder: styles.deaths,
     },
@@ -49,6 +57,7 @@ const Cards = ({
   } else {
     return (
       <div className={styles.container}>
+        <h4 className={styles.date}>{`${date} 2020`}</h4>
         <div className={styles.mainGrid}>
           {cardData.map((card, id) => (
             <div className={cx(styles.card, card.styleBorder)} key={id}>
@@ -62,8 +71,7 @@ const Cards = ({
                     seperation=","
                   />
                 </h4>
-
-                <h4>{`${date} 2020`}</h4>
+                <h4 className={styles.daily}>[ + {card.daily} ]</h4>
               </div>
             </div>
           ))}

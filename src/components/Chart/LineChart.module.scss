@@ -1,0 +1,10 @@
+.container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    align-self: center;
+    font-size: 2rem;
+    border-bottom: solid 1px #000;
+  }
+}

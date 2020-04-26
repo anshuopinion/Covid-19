@@ -11,7 +11,19 @@ export const fetchData = async (modifiedData) => {
     const totalconfirmed = modifiedData.confirmed;
     const totaldeceased = modifiedData.deaths;
     const totalrecovered = modifiedData.recovered;
-    return { date, stateName, totalconfirmed, totaldeceased, totalrecovered };
+    const dailyconfirmed = modifiedData.dailyconfirmed;
+    const dailydeceased = modifiedData.dailydeaths;
+    const dailyrecovered = modifiedData.dailyrecovered;
+    return {
+      date,
+      stateName,
+      totalconfirmed,
+      totaldeceased,
+      totalrecovered,
+      dailyconfirmed,
+      dailydeceased,
+      dailyrecovered,
+    };
   }
   try {
     //stateModifer
@@ -19,14 +31,23 @@ export const fetchData = async (modifiedData) => {
       data: { cases_time_series: timeStamp },
     } = await axios.get(`${url1}`);
 
-    const { date, totalconfirmed, totaldeceased, totalrecovered } = timeStamp[
-      timeStamp.length - 1
-    ];
+    const {
+      date,
+      totalconfirmed,
+      totaldeceased,
+      totalrecovered,
+      dailyrecovered,
+      dailyconfirmed,
+      dailydeceased,
+    } = timeStamp[timeStamp.length - 1];
     return {
       date,
       totalconfirmed,
       totaldeceased,
       totalrecovered,
+      dailyrecovered,
+      dailyconfirmed,
+      dailydeceased,
     };
   } catch (error) {
     console.log(error);
@@ -44,6 +65,9 @@ export const fetchDailyData = async () => {
       deaths: dailyData.dailydeceased,
       recovered: dailyData.dailyrecovered,
       date: dailyData.date,
+      dailyconfirmed: dailyData.dailyconfirmed,
+      dailydeaths: dailyData.dailydeceased,
+      dailyrecovered: dailyData.dailyrecovered,
     }));
     return modifiedData;
   } catch (error) {
@@ -62,7 +86,11 @@ export const fetchStates = async () => {
       confirmed: stateData.confirmed,
       recovered: stateData.recovered,
       deaths: stateData.deaths,
+      dailyconfirmed: stateData.deltaconfirmed,
+      dailydeaths: stateData.deltadeaths,
+      dailyrecovered: stateData.deltarecovered,
     }));
+
     return modifiedData;
   } catch (error) {
     console.log(error);

@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
-import styles from "./Chart.module.scss";
-const Charts = ({
-  data: {
-    totalconfirmed: confirmed,
-    totalrecovered: recovered,
-    totaldeceased: deaths,
-  },
-  stateName,
-}) => {
+import styles from "./LineChart.module.scss";
+const LineChart = () => {
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -28,51 +21,52 @@ const Charts = ({
             data: dailyData.map(({ confirmed }) => confirmed),
             label: "Infected",
             borderColor: "blue",
-            fill: true,
+            fill: false,
           },
           {
             data: dailyData.map(({ recovered }) => recovered),
             label: "Recovered",
             borderColor: "green",
             backgroundColor: "rgba(0,255,0,0.5)",
-            fill: true,
+            fill: false,
           },
           {
             data: dailyData.map(({ deaths }) => deaths),
             label: "Deaths",
             borderColor: "red",
             backgroundColor: "rgba(255,0,0,0.5)",
-            fill: true,
+            fill: false,
           },
         ],
+      }}
+      option={{
+        title: {
+          display: true,
+          text: "India Covid-19 Chart",
+          fontSize: 20,
+        },
+        scales: {
+          yAxes: [
+            {
+              stacked: true,
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                maxTicksLimit: 2,
+              },
+            },
+          ],
+        },
       }}
     />
   ) : null;
 
-  const barChart = confirmed ? (
-    <Bar
-      data={{
-        labels: ["Infected", "Recovered", "Deaths"],
-        datasets: [
-          {
-            label: "People",
-            backgroundColor: [
-              "rgba(0, 0, 255, 0.5)",
-              "rgba(0, 255,0, 0.5)",
-              "rgba(255, 0, 0, 0.5)",
-            ],
-            data: [confirmed, recovered, deaths],
-          },
-        ],
-      }}
-      options={{
-        legend: { display: false },
-        titile: { display: true, text: `Current State in ${stateName}` },
-      }}
-    />
-  ) : null;
   return (
-    <div className={styles.container}>{stateName ? barChart : lineChart}</div>
+    <div className={styles.container}>
+      <h2>National Covid- 19 Chart</h2>
+      {lineChart}
+    </div>
   );
 };
-export default Charts;
+export default LineChart;
