@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #fafafa;
+}
+.container {
+  display: grid;
+  // flex-direction: column;
+  max-width: 1000px;
+  margin: 5px auto;
+
+  grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
+
+  .banner {
+    grid-area: banner;
+  }
+  .linechart {
+    grid-area: linechart;
+  }
+  .cards {
+    grid-area: cards;
+  }
+  .spicker {
+    grid-area: spicker;
+  }
+
+  .barChart {
+    grid-area: barchart;
+  }
+  .tabled {
+    width: 100%;
+    grid-area: tabled;
+  }
+  .footer {
+    grid-area: footer;
+  }
+}
+
+.container img {
+  width: 300px;
+}
