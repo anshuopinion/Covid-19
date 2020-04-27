@@ -1,11 +1,19 @@
 import React from "react";
 import styles from "./App.module.scss";
 import Banner from "./components/Banner/Banner";
-import { Cards, LineChart, Spicker, Footer, BarChart } from "./components";
+import {
+  Cards,
+  LineChart,
+  Spicker,
+  Footer,
+  BarChart,
+  Table,
+} from "./components";
 import { fetchData } from "./api";
 class App extends React.Component {
   state = {
     data: {},
+    stateName: "",
   };
 
   async componentDidMount() {
@@ -35,18 +43,32 @@ class App extends React.Component {
     }
   };
   render() {
-    const { data } = this.state;
+    const { data, stateName } = this.state;
     return (
       <div className={styles.container}>
-        <Banner className={styles.banner} />
-        <LineChart className={styles.chart} />
-        <Cards data={data} className={styles.cards} />
-        <Spicker
-          className={styles.spicker}
-          handleStateChange={this.handleStateChange}
-        />
-        <BarChart data={data} />
-        <Footer className={styles.footer} />
+        <div className={styles.banner}>
+          <Banner />
+        </div>
+        <div className={styles.linechart}>
+          <LineChart />
+        </div>
+        <div className={styles.cards}>
+          <Cards data={data} />
+        </div>
+        <div className={styles.spicker}>
+          <Spicker handleStateChange={this.handleStateChange} />
+        </div>
+        <div className={styles.barChart}>
+          <BarChart data={data} />
+        </div>
+
+        <div className={styles.tabled}>
+          <Table stateName={stateName} />
+        </div>
+
+        <div className={styles.footer}>
+          <Footer />
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import axios from "axios";
 const url1 = "https://api.covid19india.org/data.json";
+const url2 = "https://api.covid19india.org/v2/state_district_wise.json";
 export const fetchData = async (modifiedData) => {
   if (modifiedData) {
     const {
@@ -94,5 +95,14 @@ export const fetchStates = async () => {
     return modifiedData;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const fetchDis = async () => {
+  try {
+    const { data } = await axios.get(`${url2}`);
+    return data;
+  } catch (error) {
+    return error;
   }
 };

@@ -29,6 +29,7 @@ select {
   margin-top: 10px;
   margin: auto auto;
   .selectState {
+    align-self: center;
     box-shadow: 0 1px 2px 0 $selector, 0 3px 6px 0 $selector;
     &:hover {
       box-shadow: 0 1px 2px 0 $selectorDark, 0 3px 6px 0 $selectorDark;

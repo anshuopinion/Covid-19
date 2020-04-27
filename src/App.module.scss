@@ -5,17 +5,18 @@ body {
   background-color: #fafafa;
 }
 .container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-  padding: 0;
-  grid-column: 1fr;
-  justify-content: center;
-
+  display: grid;
+  // flex-direction: column;
+  max-width: 1000px;
   margin: 5px auto;
+
+  grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
 
   .banner {
     grid-area: banner;
+  }
+  .linechart {
+    grid-area: linechart;
   }
   .cards {
     grid-area: cards;
@@ -23,13 +24,19 @@ body {
   .spicker {
     grid-area: spicker;
   }
-  .chart {
-    grid-area: chart;
+
+  .barChart {
+    grid-area: barchart;
+  }
+  .tabled {
+    width: 100%;
+    grid-area: tabled;
   }
   .footer {
     grid-area: footer;
   }
 }
+
 .container img {
   width: 300px;
 }
