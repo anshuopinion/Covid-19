@@ -51,9 +51,10 @@ select {
 }
 @media (max-width: 600px) {
   select {
-    width: 16rem;
-    background-size: 2rem;
-    padding: 1rem 1rem 1rem 1rem;
+    width: 9rem;
+    font-size: 0.5rem;
+    background-size: 1rem;
+    padding: 1rem 1rem 0.4rem 0.2rem;
   }
   .selectorContainer {
     h3 {

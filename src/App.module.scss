@@ -1,38 +1,37 @@
 * {
   box-sizing: border-box;
 }
-.lightMode {
-  .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 5px auto;
 
-    // grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 5px auto;
 
-    .banner {
-      grid-area: banner;
-    }
-    .linechart {
-      grid-area: linechart;
-    }
-    .cards {
-      grid-area: cards;
-    }
-    .spicker {
-      grid-area: spicker;
-    }
+  // grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
 
-    .barChart {
-      grid-area: barchart;
-    }
-    .tabled {
-      width: 100%;
-      grid-area: tabled;
-    }
-    .footer {
-      grid-area: footer;
-    }
+  .banner {
+    grid-area: banner;
+  }
+  .linechart {
+    grid-area: linechart;
+  }
+  .cards {
+    grid-area: cards;
+  }
+  .spicker {
+    grid-area: spicker;
+  }
+
+  .barChart {
+    grid-area: barchart;
+  }
+  .tabled {
+    width: 100%;
+    grid-area: tabled;
+  }
+  .footer {
+    grid-area: footer;
   }
 }
 

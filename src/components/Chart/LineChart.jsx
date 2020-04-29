@@ -32,7 +32,7 @@ const LineChart = ({ theme }) => {
   }, []);
 
   const trimmedDailyDate = dailyData.filter(({ date }, i) => {
-    if (i > dailyData.length - 10) {
+    if (i > dailyData.length - 30) {
       return date;
     }
     return null;
