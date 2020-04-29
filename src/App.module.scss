@@ -34,15 +34,18 @@
       grid-area: footer;
     }
   }
-
-  .container img {
-    width: 300px;
-  }
 }
 
 .darkMode {
-  background-color: rgb(46, 46, 46);
-  color: rgb(226, 226, 226);
+  $dark: rgb(46, 46, 46);
+  $light: rgb(226, 226, 226);
+  background-color: $dark;
+  color: $light;
 }
 .lightMode {
 }
+// }
+// body {
+//   background-color: $dark;
+//   color: rgb(226, 226, 226);
+// }

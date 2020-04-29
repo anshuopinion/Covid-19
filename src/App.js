@@ -57,30 +57,30 @@ const App = () => {
   };
 
   return (
-    <div
-      className={(styles.container, theme ? styles.darkMode : styles.lightMode)}
-    >
-      <div className={styles.banner}>
-        <Banner setTheme={setTheme} theme={theme} />
-      </div>
-      <div className={styles.linechart}>
-        <LineChart theme={theme} />
-      </div>
-      <div className={styles.cards}>
-        <Cards data={data} theme={theme} />
-      </div>
-      <div className={styles.tabled}>
-        <Table stateName={stateName} theme={theme} />
-      </div>
-      <div className={styles.spicker}>
-        <Spicker handleStateChange={handleStateChange} theme={theme} />
-      </div>
-      <div className={styles.barChart}>
-        <BarChart data={data} theme={theme} />
-      </div>
+    <div className={theme ? styles.darkMode : styles.lightMode}>
+      <div className={styles.container}>
+        <div className={styles.banner}>
+          <Banner setTheme={setTheme} theme={theme} />
+        </div>
+        <div className={styles.linechart}>
+          <LineChart theme={theme} />
+        </div>
+        <div className={styles.cards}>
+          <Cards data={data} theme={theme} />
+        </div>
+        <div className={styles.tabled}>
+          <Table stateName={stateName} theme={theme} />
+        </div>
+        <div className={styles.spicker}>
+          <Spicker handleStateChange={handleStateChange} theme={theme} />
+        </div>
+        <div className={styles.barChart}>
+          <BarChart data={data} theme={theme} />
+        </div>
 
-      <div className={styles.footer}>
-        <Footer theme={theme} />
+        <div className={styles.footer}>
+          <Footer theme={theme} />
+        </div>
       </div>
     </div>
   );

@@ -70,28 +70,45 @@
     }
     .contentTable {
       font-size: 0.9rem;
-    }
-    th {
-      padding: 8px 10px;
-    }
-    td {
-      padding: 8px 10px;
+
+      th {
+        padding: 3px 5px;
+      }
+      td {
+        padding: 3px 5px;
+      }
     }
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 330px) {
   .container {
     h3 {
       font-size: 1rem;
     }
     .contentTable {
       font-size: 0.8rem;
+
+      th {
+        padding: 0;
+      }
+      td {
+        padding: 0;
+      }
     }
-    th {
-      padding: 0;
-    }
-    td {
-      padding: 0;
+  }
+}
+
+.darkMode {
+  .container {
+    .contentTable {
+      tbody {
+        tr {
+          &:nth-of-type(even) {
+            background-color: #6e6e6e;
+            color: rgb(255, 255, 255);
+          }
+        }
+      }
     }
   }
 }

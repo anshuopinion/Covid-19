@@ -32,7 +32,7 @@ const LineChart = ({ theme }) => {
   }, []);
 
   const trimmedDailyDate = dailyData.filter(({ date }, i) => {
-    if (i > dailyData.length - 30) {
+    if (i > dailyData.length - 10) {
       return date;
     }
     return null;
@@ -70,13 +70,16 @@ const LineChart = ({ theme }) => {
         ],
       }}
       options={{
+        responsive: true,
+
         legend: {
-          labels: { fontColor: theme ? "#fff" : "#000" },
+          display: false,
+          labels: { fontColor: theme ? "#fff" : "#000", fontSize: 10 },
         },
         title: {
           display: true,
           text: "India Covid-19 Chart",
-          fontSize: 20,
+          fontSize: 10,
         },
         scales: {
           yAxes: [
@@ -101,7 +104,7 @@ const LineChart = ({ theme }) => {
               },
 
               ticks: {
-                maxTicksLimit: 15,
+                maxTicksLimit: 10,
                 fontColor: theme ? "#fff" : "#000",
               },
             },
@@ -111,6 +114,10 @@ const LineChart = ({ theme }) => {
     />
   ) : null;
 
-  return <div className={styles.container}>{lineChart}</div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.LineChart}>{lineChart}</div>
+    </div>
+  );
 };
 export default LineChart;
