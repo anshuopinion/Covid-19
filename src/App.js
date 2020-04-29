@@ -38,7 +38,7 @@ class App extends React.Component {
         dailyrecovered: stateDataArray[6],
       };
       const fetchedData = await fetchData(modifiedStateData);
-      console.log(modifiedStateData);
+
       this.setState({ data: fetchedData, stateName: fetchedData.stateName });
     }
   };
@@ -55,15 +55,14 @@ class App extends React.Component {
         <div className={styles.cards}>
           <Cards data={data} />
         </div>
+        <div className={styles.tabled}>
+          <Table stateName={stateName} />
+        </div>
         <div className={styles.spicker}>
           <Spicker handleStateChange={this.handleStateChange} />
         </div>
         <div className={styles.barChart}>
           <BarChart data={data} />
-        </div>
-
-        <div className={styles.tabled}>
-          <Table stateName={stateName} />
         </div>
 
         <div className={styles.footer}>

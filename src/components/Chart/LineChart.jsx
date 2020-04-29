@@ -30,31 +30,42 @@ const LineChart = () => {
     };
     fetchAPI();
   }, []);
-  const lineChart = dailyData.length ? (
+
+  const trimmedDailyDate = dailyData.filter(({ date }, i) => {
+    if (i > dailyData.length - 30) {
+      return date;
+    }
+    return null;
+  });
+
+  const lineChart = trimmedDailyDate.length ? (
     <Line
       data={{
-        labels: dailyData.map(({ date }, i) => date),
+        labels: trimmedDailyDate.map(({ date }, i) => {
+          if (i === 0) {
+            return 0;
+          }
+          return date;
+        }),
         datasets: [
           {
-            data: dailyData.map(({ confirmed }) => confirmed),
-            borderWidth: 2,
-            borderCapStyle: "round",
-            pointBackgroundColor: "blue",
+            data: trimmedDailyDate.map(({ confirmed }) => confirmed),
+            fill: "false",
+            backgroundColor: "blue",
             label: "Confirmed",
             borderColor: "blue",
             pointHoverRadius: 2,
           },
           {
-            data: dailyData.map(({ recovered }) => recovered),
-            borderWidth: 2,
-            borderCapStyle: "round",
-            pointBackgroundColor: "green",
+            data: trimmedDailyDate.map(({ recovered }) => recovered),
+            fill: "false",
+            backgroundColor: "green",
             label: "Recovered",
             borderColor: "green",
             pointHoverRadius: 2,
           },
           {
-            data: dailyData.map(({ deaths }) => deaths),
+            data: trimmedDailyDate.map(({ deaths }) => deaths),
             label: "Deaths",
             borderColor: "red",
             backgroundColor: "rgba(255,0,0,0.5)",
@@ -62,7 +73,7 @@ const LineChart = () => {
           },
         ],
       }}
-      option={{
+      options={{
         title: {
           display: true,
           text: "India Covid-19 Chart",
@@ -71,26 +82,24 @@ const LineChart = () => {
         scales: {
           yAxes: [
             {
-              stacked: true,
-              gridLines: {
-                display: false,
-              },
+              position: "right",
               ticks: {
-                maxTicksLimit: 2,
+                maxTicksLimit: 5,
               },
             },
           ],
-          xAxes: [],
+          xAxes: [
+            {
+              ticks: {
+                maxTicksLimit: 15,
+              },
+            },
+          ],
         },
       }}
     />
   ) : null;
 
-  return (
-    <div className={styles.container}>
-      <h2>National Covid- 19 Chart</h2>
-      {lineChart}
-    </div>
-  );
+  return <div className={styles.container}>{lineChart}</div>;
 };
 export default LineChart;

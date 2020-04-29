@@ -22,8 +22,8 @@ select {
   display: flex;
   flex-direction: column;
   h3 {
-    font-size: 2rem;
-    margin-top: 4rem;
+    font-size: 1.8rem;
+    margin-top: 2rem;
     align-self: center;
   }
   margin-top: 10px;
@@ -33,6 +33,32 @@ select {
     box-shadow: 0 1px 2px 0 $selector, 0 3px 6px 0 $selector;
     &:hover {
       box-shadow: 0 1px 2px 0 $selectorDark, 0 3px 6px 0 $selectorDark;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  select {
+    width: 35rem;
+    background-size: 2.5rem;
+  }
+  .selectorContainer {
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  select {
+    width: 16rem;
+    background-size: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .selectorContainer {
+    h3 {
+      font-size: 1rem;
+      margin-top: 1rem;
     }
   }
 }

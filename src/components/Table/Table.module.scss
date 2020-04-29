@@ -3,15 +3,17 @@
   max-width: 1000px;
   display: flex;
   flex-direction: column;
+
   h3 {
     align-self: center;
-    font-size: 3rem;
+    font-size: 1.8rem;
   }
 
   .contentTable {
+    align-self: center;
     border-collapse: collapse;
 
-    font-size: 2rem;
+    font-size: 1.5rem;
 
     width: 100%;
 
@@ -31,6 +33,10 @@
     }
     td {
       padding: 12px 15px;
+      text-align: right;
+    }
+    .dis {
+      text-align: left;
     }
 
     tbody {
@@ -43,6 +49,49 @@
           border-bottom: red 1px solid;
         }
       }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .container {
+    h3 {
+      font-size: 1rem;
+    }
+    .contentTable {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    h3 {
+      font-size: 1rem;
+    }
+    .contentTable {
+      font-size: 0.9rem;
+    }
+    th {
+      padding: 8px 10px;
+    }
+    td {
+      padding: 8px 10px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    h3 {
+      font-size: 1rem;
+    }
+    .contentTable {
+      font-size: 0.8rem;
+    }
+    th {
+      padding: 0;
+    }
+    td {
+      padding: 0;
     }
   }
 }

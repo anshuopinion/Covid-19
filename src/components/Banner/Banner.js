@@ -10,10 +10,9 @@ const banner = (props) => {
         <div className={styles.covidBanner}>
           <img src={CovidBanner} alt="Covid Banner" />
         </div>
-        <div className={styles.tracker}>
-          {" "}
-          <h4>Indian Tracker</h4>
-        </div>
+        <button className={styles.tracker}>
+          <h4>Dark</h4>
+        </button>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const Table = ({ stateName }) => {
     };
     fetchAPI();
   }, []);
-  console.log(stateName);
+
   return stateName ? (
     <div className={styles.container}>
       <h3>District Infected By Covid-19 in {stateName}</h3>
@@ -29,7 +29,7 @@ const Table = ({ stateName }) => {
               <tbody key={j}>
                 {each.districtData.map((disData, i) => (
                   <tr key={i}>
-                    <td>{disData.district}</td>
+                    <td className={styles.dis}>{disData.district}</td>
                     <td>{disData.confirmed}</td>
                     <td>{disData.active}</td>
                     <td>{disData.recovered}</td>
