@@ -62,3 +62,20 @@ select {
     }
   }
 }
+
+.darkMode {
+  select {
+    color: rgb(221, 221, 221);
+    option {
+      color: rgb(202, 202, 202);
+      background-color: rgb(41, 41, 41);
+    }
+  }
+  .selectState {
+    &:hover {
+      box-shadow: 0 1px 2px 0 rgb(161, 161, 161), 0 3px 6px 0 rgb(163, 163, 163);
+    }
+  }
+}
+.lightMode {
+}

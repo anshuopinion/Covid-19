@@ -10,8 +10,8 @@
   justify-content: space-between;
   border-bottom: red 1px dotted;
 
-  button {
-    margin-bottom: 5px;
+  i {
+    color: rgb(88, 88, 88);
   }
 
   img {
@@ -40,6 +40,12 @@
     font-size: 0.5rem;
   }
   .covidBanner {
-    transform: scale(0.9);
+    transform: scale(0.6);
+  }
+}
+
+.darkMode {
+  i {
+    color: rgb(218, 218, 51);
   }
 }

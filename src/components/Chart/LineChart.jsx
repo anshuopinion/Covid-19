@@ -3,7 +3,7 @@ import { fetchDailyData } from "../../api";
 import { Line, defaults } from "react-chartjs-2";
 
 import styles from "./LineChart.module.scss";
-const LineChart = () => {
+const LineChart = ({ theme }) => {
   defaults.global.tooltips.intersect = false;
   defaults.global.tooltips.mode = "nearest";
   defaults.global.tooltips.position = "average";
@@ -41,39 +41,38 @@ const LineChart = () => {
   const lineChart = trimmedDailyDate.length ? (
     <Line
       data={{
-        labels: trimmedDailyDate.map(({ date }, i) => {
-          if (i === 0) {
-            return 0;
-          }
-          return date;
-        }),
+        labels: trimmedDailyDate.map(({ date }, i) => date),
         datasets: [
           {
             data: trimmedDailyDate.map(({ confirmed }) => confirmed),
             fill: "false",
-            backgroundColor: "blue",
+            borderColor: "rgba(0,0,255,1)",
+            backgroundColor: "rgba(0,0,255,1)",
             label: "Confirmed",
-            borderColor: "blue",
+
             pointHoverRadius: 2,
           },
           {
             data: trimmedDailyDate.map(({ recovered }) => recovered),
             fill: "false",
-            backgroundColor: "green",
+            backgroundColor: "rgba(0,255,0,1)",
             label: "Recovered",
-            borderColor: "green",
+            borderColor: "rgba(0,255,0,1)",
             pointHoverRadius: 2,
           },
           {
             data: trimmedDailyDate.map(({ deaths }) => deaths),
             label: "Deaths",
-            borderColor: "red",
-            backgroundColor: "rgba(255,0,0,0.5)",
+            borderColor: "rgba(255,0,0,1)",
+            backgroundColor: "rgba(255,0,0,1)",
             fill: false,
           },
         ],
       }}
       options={{
+        legend: {
+          labels: { fontColor: theme ? "#fff" : "#000" },
+        },
         title: {
           display: true,
           text: "India Covid-19 Chart",
@@ -82,16 +81,28 @@ const LineChart = () => {
         scales: {
           yAxes: [
             {
+              gridLines: {
+                display: true,
+                color: theme ? "#fff" : "#000",
+              },
+
               position: "right",
               ticks: {
                 maxTicksLimit: 5,
+                fontColor: theme ? "#fff" : "#000",
               },
             },
           ],
           xAxes: [
             {
+              gridLines: {
+                display: true,
+                color: theme ? "#fff" : "#000",
+              },
+
               ticks: {
                 maxTicksLimit: 15,
+                fontColor: theme ? "#fff" : "#000",
               },
             },
           ],

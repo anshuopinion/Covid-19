@@ -1,46 +1,48 @@
 * {
   box-sizing: border-box;
 }
+.lightMode {
+  .container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 5px auto;
+
+    // grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
+
+    .banner {
+      grid-area: banner;
+    }
+    .linechart {
+      grid-area: linechart;
+    }
+    .cards {
+      grid-area: cards;
+    }
+    .spicker {
+      grid-area: spicker;
+    }
+
+    .barChart {
+      grid-area: barchart;
+    }
+    .tabled {
+      width: 100%;
+      grid-area: tabled;
+    }
+    .footer {
+      grid-area: footer;
+    }
+  }
+
+  .container img {
+    width: 300px;
+  }
+}
+
 .darkMode {
-  background-color: #000;
+  background-color: rgb(46, 46, 46);
+  color: rgb(226, 226, 226);
 }
 .lightMode {
-  background-color: #fafafa;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-  margin: 5px auto;
-
-  // grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
-
-  .banner {
-    grid-area: banner;
-  }
-  .linechart {
-    grid-area: linechart;
-  }
-  .cards {
-    grid-area: cards;
-  }
-  .spicker {
-    grid-area: spicker;
-  }
-
-  .barChart {
-    grid-area: barchart;
-  }
-  .tabled {
-    width: 100%;
-    grid-area: tabled;
-  }
-  .footer {
-    grid-area: footer;
-  }
-}
-
-.container img {
-  width: 300px;
 }

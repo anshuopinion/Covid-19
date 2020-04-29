@@ -9,6 +9,7 @@ const BarChart = ({
     totaldeceased: deaths,
   },
   stateName,
+  theme,
 }) => {
   const barChart = confirmed ? (
     <Bar
@@ -17,12 +18,19 @@ const BarChart = ({
         datasets: [
           {
             label: "People",
-            backgroundColor: [
-              "rgba(0, 0, 255, 0.5)",
-              "rgba(255, 145, 0, 0.5)",
-              "rgba(0, 255,0, 0.5)",
-              "rgba(255, 0, 0, 0.5)",
-            ],
+            backgroundColor: theme
+              ? [
+                  "rgba(0, 0, 255, 1)",
+                  "rgba(255, 145, 0,1)",
+                  "rgba(0, 255,0, 1)",
+                  "rgba(255, 0, 0, 1)",
+                ]
+              : [
+                  "rgba(0, 0, 255, 0.5)",
+                  "rgba(255, 145, 0, 0.5)",
+                  "rgba(0, 255,0, 0.5)",
+                  "rgba(255, 0, 0, 0.5)",
+                ],
             data: [
               confirmed,
               confirmed - recovered - deaths,
@@ -41,7 +49,11 @@ const BarChart = ({
             {
               stacked: true,
               gridLines: {
-                display: false,
+                display: true,
+                color: theme ? "#fff" : "#000",
+              },
+              ticks: {
+                fontColor: theme ? "#fff" : "#000",
               },
             },
           ],
@@ -49,6 +61,10 @@ const BarChart = ({
             {
               gridLines: {
                 display: true,
+                color: theme ? "#fff" : "#000",
+              },
+              ticks: {
+                fontColor: theme ? "#fff" : "#000",
               },
             },
           ],

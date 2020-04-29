@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./Footer.module.scss";
-const Footer = () => {
+const Footer = ({ theme }) => {
   return (
-    <div className="container">
+    <div
+      className={(styles.container, theme ? styles.darkMode : styles.lightMode)}
+    >
       <footer>
         <a
           href="https://youtube.com/anshuopinion"
