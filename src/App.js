@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./App.module.scss";
 import Banner from "./components/Banner/Banner";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import {
   Cards,
   LineChart,
@@ -56,9 +57,22 @@ const App = () => {
     }
   };
 
+  const GlobalStyle = createGlobalStyle`
+body{
+  background-color:${(props) =>
+    props.theme.mode === true ? "#202040" : "#fff"};
+  color::${(props) => (props.theme.mode === true ? "#fff" : "#202040")};
+}
+`;
+
   return (
-    <div className={theme ? styles.darkMode : styles.lightMode}>
-      <div className={styles.container}>
+    <ThemeProvider theme={{ mode: theme }}>
+      <GlobalStyle />
+      <div
+        className={
+          (styles.container, theme ? styles.darkMode : styles.lightMode)
+        }
+      >
         <div className={styles.banner}>
           <Banner setTheme={setTheme} theme={theme} />
         </div>
@@ -82,7 +96,7 @@ const App = () => {
           <Footer theme={theme} />
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 

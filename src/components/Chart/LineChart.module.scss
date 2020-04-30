@@ -1,6 +1,33 @@
 .container {
-  margin-top: 2rem;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  margin: 5px auto;
+
+  h3 {
+    font-size: 2rem;
+    align-self: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    h3 {
+      font-size: 158rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    h3 {
+      font-size: 1rem;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .container {
+    h3 {
+      font-size: 0.8rem;
+    }
+  }
 }

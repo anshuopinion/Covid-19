@@ -41,6 +41,8 @@ const BarChart = ({
         ],
       }}
       options={{
+        scaleLabel: "<%= Number(value).toFixed(2).replace('.', ',') + ' $'%>",
+
         legend: { display: false },
         titile: { display: true, text: `Current State in ${stateName}` },
 

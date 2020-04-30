@@ -22,7 +22,6 @@ a {
 }
 
 footer {
-  background-color: rgb(103, 107, 101);
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -30,27 +29,26 @@ footer {
   max-width: 1200px;
   margin: 5px auto;
   .youtube {
-    color: rgb(247, 48, 48);
-    background-color: #fff;
+    color: #fff;
+    background-color: rgb(247, 48, 48);
     padding: 0.25rem 1rem;
     border-radius: 0.5rem;
     &:hover {
-      color: #fff;
-      background-color: rgb(247, 48, 48);
-      box-shadow: 0 0.2rem 0.4rem 0 rgb(247, 48, 48),
-        0 0.3rem 1rem 0 rgb(247, 48, 48);
+      color: rgb(247, 48, 48);
+      background-color: #fff;
+      box-shadow: 0 0.2rem 0.4rem 0 rgb(247, 48, 48);
     }
   }
   .telegram {
-    color: rgb(41, 170, 245);
-    background-color: #fff;
+    color: #fff;
+    background-color: rgb(41, 170, 245);
     padding: 0.25rem 1rem;
     border-radius: 0.5rem;
     &:hover {
-      color: #fff;
-      background-color: rgb(41, 170, 245);
-      box-shadow: 0 0.2rem 0.4rem 0 rgb(41, 170, 245),
-        0 0.3rem 1rem 0 rgb(41, 170, 245);
+      color: rgb(41, 170, 245);
+      background-color: #fff;
+
+      box-shadow: 0 0.2rem 0.4rem 0 rgb(41, 170, 245);
     }
   }
   a {
@@ -59,7 +57,7 @@ footer {
 
     font-size: 1.5rem;
 
-    i {
+    .Icon {
       margin-right: 0.5rem;
       margin-left: 2rem;
     }
@@ -70,7 +68,6 @@ footer {
   }
   p {
     font-size: 1.5rem;
-    color: #fff;
   }
 }
 
@@ -110,25 +107,36 @@ footer {
     }
   }
 }
+@media (max-width: 450px) {
+  footer {
+    .youtube {
+      padding: 0.15rem 0.2rem;
+    }
+    .telegram {
+      padding: 0.15rem 0.2rem;
+    }
+    a {
+      font-size: 1rem;
+      color: red;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+}
 
 .darkMode {
   footer {
-    background-color: rgb(71, 71, 71);
-
     .youtube {
-      background-color: rgb(95, 95, 95);
-      border: 0.5px #fff solid;
       &:hover {
+        background-color: rgb(223, 222, 222);
         border: none;
-        background-color: red;
       }
     }
     .telegram {
-      background-color: rgb(95, 95, 95);
-      border: 0.5px #fff solid;
       &:hover {
         border: none;
-        background-color: rgb(41, 170, 245);
+        background-color: rgb(223, 222, 222);
       }
     }
     p {

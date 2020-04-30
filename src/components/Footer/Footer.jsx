@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faYoutube, faTelegram } from "@fortawesome/free-brands-svg-icons";
 const Footer = ({ theme }) => {
   return (
     <div
@@ -10,14 +12,18 @@ const Footer = ({ theme }) => {
           href="https://youtube.com/anshuopinion"
           className={(styles.button, styles.youtube)}
         >
-          <i className="fab fa-youtube fa-2x"></i>
+          <FontAwesomeIcon className={styles.Icon} icon={faYoutube} size="2x" />
           <div> Subscribe Us. On Youtube</div>
         </a>
         <a
           href="https://telegram.me/anshusopinion"
           className={(styles.button, styles.telegram)}
         >
-          <i className="fab fa-telegram fa-2x"> </i>
+          <FontAwesomeIcon
+            className={styles.Icon}
+            icon={faTelegram}
+            size="2x"
+          />
           <div>Join Our Telegram Channel</div>
         </a>
 

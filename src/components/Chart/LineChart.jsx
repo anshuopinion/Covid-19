@@ -76,11 +76,6 @@ const LineChart = ({ theme }) => {
           display: false,
           labels: { fontColor: theme ? "#fff" : "#000", fontSize: 10 },
         },
-        title: {
-          display: true,
-          text: "India Covid-19 Chart",
-          fontSize: 10,
-        },
         scales: {
           yAxes: [
             {
@@ -116,6 +111,7 @@ const LineChart = ({ theme }) => {
 
   return (
     <div className={styles.container}>
+      <h3>India's CoronaVirus Graph</h3>
       <div className={styles.LineChart}>{lineChart}</div>
     </div>
   );

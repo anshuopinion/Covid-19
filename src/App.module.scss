@@ -3,12 +3,12 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  // flex-direction: column;
   max-width: 1200px;
   margin: 5px auto;
 
-  // grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
+  grid-template-areas: "banner" "linechart" "cards" "tabled" "spicker" "barchart" "footer";
 
   .banner {
     grid-area: banner;
@@ -36,12 +36,10 @@
 }
 
 .darkMode {
-  $dark: rgb(46, 46, 46);
-  $light: rgb(226, 226, 226);
-  background-color: $dark;
-  color: $light;
+  color: rgb(185, 182, 182);
 }
 .lightMode {
+  color: rgb(71, 71, 71);
 }
 // }
 // body {

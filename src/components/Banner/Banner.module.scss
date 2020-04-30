@@ -1,7 +1,7 @@
 .container {
   flex-direction: column;
   display: flex;
-  margin: 5px auto;
+  margin: 0 auto;
   max-width: 1200px;
 }
 
@@ -10,7 +10,7 @@
   justify-content: space-between;
   border-bottom: red 1px dotted;
 
-  i {
+  .Icon {
     color: rgb(88, 88, 88);
   }
 
@@ -25,6 +25,8 @@
 .covidBanner {
   transform: scale(1.7);
 }
+
+//MediaQuery
 
 @media (max-width: 900px) {
   .tracker {
@@ -44,8 +46,34 @@
   }
 }
 
+@media (max-width: 600px) {
+  .tracker {
+    font-size: 0.5rem;
+  }
+  .covidBanner {
+    transform: scale(1);
+    margin-left: -10px;
+  }
+
+  .banner {
+    img {
+      width: auto;
+      height: 25px;
+    }
+
+    .Icon {
+      margin-right: 5px;
+      margin-top: 8px;
+    }
+  }
+}
+
+//Themes
 .darkMode {
-  i {
+  .Icon {
     color: rgb(218, 218, 51);
+  }
+  .banner {
+    border-bottom: rgb(221, 221, 221) 1px dotted;
   }
 }
