@@ -1,17 +1,19 @@
 .container {
   margin: 25px auto;
-  max-width: 1000px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
+
   h3 {
     align-self: center;
-    font-size: 3rem;
+    font-size: 1.8rem;
   }
 
   .contentTable {
+    align-self: center;
     border-collapse: collapse;
 
-    font-size: 2rem;
+    font-size: 1.5rem;
 
     width: 100%;
 
@@ -31,6 +33,10 @@
     }
     td {
       padding: 12px 15px;
+      text-align: center;
+    }
+    .dis {
+      text-align: left;
     }
 
     tbody {
@@ -41,6 +47,75 @@
         }
         &:last-of-type {
           border-bottom: red 1px solid;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .container {
+    h3 {
+      font-size: 1rem;
+    }
+    .contentTable {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    h3 {
+      font-size: 1rem;
+    }
+    .contentTable {
+      font-size: 0.9rem;
+
+      th {
+        padding: 3px 5px;
+      }
+      td {
+        padding: 3px 5px;
+      }
+    }
+  }
+}
+@media (max-width: 330px) {
+  .container {
+    h3 {
+      font-size: 1rem;
+    }
+    .contentTable {
+      thead {
+        tr {
+          background-color: red;
+          color: #fff;
+          text-align: left;
+          font-weight: 0;
+        }
+      }
+
+      font-size: 0.8rem;
+
+      th {
+        padding: 0;
+      }
+      td {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.darkMode {
+  .container {
+    .contentTable {
+      tbody {
+        tr {
+          &:nth-of-type(even) {
+            background-color: #292828;
+            color: rgb(223, 223, 223);
+          }
         }
       }
     }

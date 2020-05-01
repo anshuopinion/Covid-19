@@ -22,33 +22,33 @@ a {
 }
 
 footer {
-  background-color: rgb(103, 107, 101);
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  max-width: 1200px;
+  margin: 5px auto;
   .youtube {
-    color: rgb(247, 48, 48);
-    background-color: #fff;
+    color: #fff;
+    background-color: rgb(247, 48, 48);
     padding: 0.25rem 1rem;
     border-radius: 0.5rem;
     &:hover {
-      color: #fff;
-      background-color: rgb(247, 48, 48);
-      box-shadow: 0 0.2rem 0.4rem 0 rgb(247, 48, 48),
-        0 0.3rem 1rem 0 rgb(247, 48, 48);
+      color: rgb(247, 48, 48);
+      background-color: #fff;
+      box-shadow: 0 0.2rem 0.4rem 0 rgb(247, 48, 48);
     }
   }
   .telegram {
-    color: rgb(41, 170, 245);
-    background-color: #fff;
+    color: #fff;
+    background-color: rgb(41, 170, 245);
     padding: 0.25rem 1rem;
     border-radius: 0.5rem;
     &:hover {
-      color: #fff;
-      background-color: rgb(41, 170, 245);
-      box-shadow: 0 0.2rem 0.4rem 0 rgb(41, 170, 245),
-        0 0.3rem 1rem 0 rgb(41, 170, 245);
+      color: rgb(41, 170, 245);
+      background-color: #fff;
+
+      box-shadow: 0 0.2rem 0.4rem 0 rgb(41, 170, 245);
     }
   }
   a {
@@ -57,7 +57,7 @@ footer {
 
     font-size: 1.5rem;
 
-    i {
+    .Icon {
       margin-right: 0.5rem;
       margin-left: 2rem;
     }
@@ -67,7 +67,80 @@ footer {
     }
   }
   p {
-    font-size: 2rem;
-    color: #fff;
+    font-size: 1.5rem;
+  }
+}
+
+// media Query
+
+@media (max-width: 900px) {
+  footer {
+    .youtube {
+      padding: 0.15rem 0.5rem;
+    }
+    .telegram {
+      padding: 0.15rem 0.5rem;
+    }
+    a {
+      font-size: 1.2rem;
+      color: red;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  footer {
+    .youtube {
+      padding: 0.15rem 0.2rem;
+    }
+    .telegram {
+      padding: 0.15rem 0.2rem;
+    }
+    a {
+      font-size: 1rem;
+      color: red;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+@media (max-width: 450px) {
+  footer {
+    .youtube {
+      padding: 0.15rem 0.2rem;
+    }
+    .telegram {
+      padding: 0.15rem 0.2rem;
+    }
+    a {
+      font-size: 1rem;
+      color: red;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.darkMode {
+  footer {
+    .youtube {
+      &:hover {
+        background-color: rgb(223, 222, 222);
+        border: none;
+      }
+    }
+    .telegram {
+      &:hover {
+        border: none;
+        background-color: rgb(223, 222, 222);
+      }
+    }
+    p {
+      color: rgb(196, 195, 195);
+    }
   }
 }

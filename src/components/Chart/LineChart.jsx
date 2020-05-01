@@ -3,7 +3,7 @@ import { fetchDailyData } from "../../api";
 import { Line, defaults } from "react-chartjs-2";
 
 import styles from "./LineChart.module.scss";
-const LineChart = () => {
+const LineChart = ({ theme }) => {
   defaults.global.tooltips.intersect = false;
   defaults.global.tooltips.mode = "nearest";
   defaults.global.tooltips.position = "average";
@@ -30,57 +30,106 @@ const LineChart = () => {
     };
     fetchAPI();
   }, []);
-  const lineChart = dailyData.length ? (
+
+  const trimmedDailyDate = dailyData.filter(({ date }, i) => {
+    if (i > dailyData.length - 30) {
+      return date;
+    }
+    return null;
+  });
+
+  const lineChart = trimmedDailyDate.length ? (
     <Line
       data={{
-        labels: dailyData.map(({ date }, i) => date),
+        labels: trimmedDailyDate.map(({ date }, i) => date),
         datasets: [
           {
-            data: dailyData.map(({ confirmed }) => confirmed),
-            borderWidth: 2,
-            borderCapStyle: "round",
-            pointBackgroundColor: "blue",
+            data: trimmedDailyDate.map(({ confirmed }) => confirmed),
+            fill: "false",
+            borderColor: "rgba(0,0,255,1)",
+            backgroundColor: "rgba(0,0,255,1)",
             label: "Confirmed",
-            borderColor: "blue",
+
             pointHoverRadius: 2,
           },
           {
-            data: dailyData.map(({ recovered }) => recovered),
-            borderWidth: 2,
-            borderCapStyle: "round",
-            pointBackgroundColor: "green",
+            data: trimmedDailyDate.map(({ recovered }) => recovered),
+            fill: "false",
+            backgroundColor: "rgba(0,255,0,1)",
             label: "Recovered",
-            borderColor: "green",
+            borderColor: "rgba(0,255,0,1)",
             pointHoverRadius: 2,
           },
           {
-            data: dailyData.map(({ deaths }) => deaths),
+            data: trimmedDailyDate.map(({ deaths }) => deaths),
             label: "Deaths",
-            borderColor: "red",
-            backgroundColor: "rgba(255,0,0,0.5)",
+            borderColor: "rgba(255,0,0,1)",
+            backgroundColor: "rgba(255,0,0,1)",
             fill: false,
           },
         ],
       }}
-      option={{
-        title: {
+      options={{
+        responsive: true,
+
+        legend: {
           display: true,
-          text: "India Covid-19 Chart",
-          fontSize: 20,
+          labels: {
+            fontColor: theme ? "#fff" : "#000",
+            fontSize: 10,
+            maxWidth: 5,
+          },
         },
         scales: {
           yAxes: [
             {
-              stacked: true,
               gridLines: {
-                display: false,
+                display: true,
+                color: theme ? "#fff" : "#000",
               },
+
+              position: "right",
               ticks: {
-                maxTicksLimit: 2,
+                maxTicksLimit: 5,
+                fontColor: theme ? "#fff" : "#000",
+                callback: (value) => {
+                  if (value >= 100) return value / 1000 + "k";
+                  else return value;
+                },
               },
             },
           ],
-          xAxes: [],
+          xAxes: [
+            {
+              type: "time",
+              time: {
+                unit: "day",
+                tooltipFormat: "MMM DD",
+                stepSize: 7,
+                displayFormats: {
+                  millisecond: "MMM DD",
+                  second: "MMM DD",
+                  minute: "MMM DD",
+                  hour: "MMM DD",
+                  day: "MMM DD",
+                  week: "MMM DD",
+                  month: "MMM DD",
+                  quarter: "MMM DD",
+                  year: "MMM DD",
+                },
+              },
+
+              gridLines: {
+                display: true,
+                color: theme ? "#fff" : "#000",
+              },
+
+              ticks: {
+                maxTicksLimit: 10,
+                fontColor: theme ? "#fff" : "#000",
+              },
+            },
+          ],
         },
       }}
     />
@@ -88,8 +137,8 @@ const LineChart = () => {
 
   return (
     <div className={styles.container}>
-      <h2>National Covid- 19 Chart</h2>
-      {lineChart}
+      <h3>India's CoronaVirus Graph</h3>
+      <div className={styles.LineChart}>{lineChart}</div>
     </div>
   );
 };

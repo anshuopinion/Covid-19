@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./App.module.scss";
 import Banner from "./components/Banner/Banner";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import {
   Cards,
   LineChart,
@@ -10,21 +11,32 @@ import {
   Table,
 } from "./components";
 import { fetchData } from "./api";
-class App extends React.Component {
-  state = {
-    data: {},
-    stateName: "",
-  };
+const App = () => {
+  const [data, setData] = useState([]);
+  const [stateName, setStateName] = useState("");
+  const [theme, setTheme] = useState(getThemeMode());
 
-  async componentDidMount() {
-    const fetchedData = await fetchData();
-    this.setState({ data: fetchedData });
+  useEffect(() => {
+    const fetchedData = async () => {
+      setData(await fetchData());
+    };
+    fetchedData();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("dark", JSON.stringify(theme));
+  }, [theme]);
+
+  function getThemeMode() {
+    const saveThemeData = JSON.parse(localStorage.getItem("dark"));
+    return saveThemeData || false;
   }
 
-  handleStateChange = async (stateData) => {
+  const handleStateChange = async (stateData) => {
     if (!stateData) {
       const fetchedData = await fetchData();
-      this.setState({ data: fetchedData, stateName: "" });
+      setStateName("");
+      setData(fetchedData);
     } else {
       const stateDataArray = stateData.split(",");
 
@@ -38,39 +50,55 @@ class App extends React.Component {
         dailyrecovered: stateDataArray[6],
       };
       const fetchedData = await fetchData(modifiedStateData);
-      console.log(modifiedStateData);
-      this.setState({ data: fetchedData, stateName: fetchedData.stateName });
+
+      setData(fetchedData);
+      setStateName(fetchedData.stateName);
+      // this.setState({ data:, stateName: fetchedData.stateName });
     }
   };
-  render() {
-    const { data, stateName } = this.state;
-    return (
-      <div className={styles.container}>
+
+  const GlobalStyle = createGlobalStyle`
+body{
+  background-color:${(props) =>
+    props.theme.mode === true ? "#202040" : "#fff"};
+  color::${(props) => (props.theme.mode === true ? "#fff" : "#202040")};
+  transition: ${() => " background-color 250ms ease-in , color 300ms ease-out"};
+}
+`;
+
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <GlobalStyle />
+      <div
+        className={
+          (styles.container, theme ? styles.darkMode : styles.lightMode)
+        }
+      >
         <div className={styles.banner}>
-          <Banner />
+          <Banner setTheme={setTheme} theme={theme} />
         </div>
         <div className={styles.linechart}>
-          <LineChart />
+          <LineChart theme={theme} />
         </div>
         <div className={styles.cards}>
-          <Cards data={data} />
+          <Cards data={data} theme={theme} />
+        </div>
+        <div className={styles.tabled}>
+          <Table stateName={stateName} theme={theme} />
         </div>
         <div className={styles.spicker}>
-          <Spicker handleStateChange={this.handleStateChange} />
+          <Spicker handleStateChange={handleStateChange} theme={theme} />
         </div>
         <div className={styles.barChart}>
-          <BarChart data={data} />
-        </div>
-
-        <div className={styles.tabled}>
-          <Table stateName={stateName} />
+          <BarChart data={data} theme={theme} />
         </div>
 
         <div className={styles.footer}>
-          <Footer />
+          <Footer theme={theme} />
         </div>
       </div>
-    );
-  }
-}
+    </ThemeProvider>
+  );
+};
+
 export default App;

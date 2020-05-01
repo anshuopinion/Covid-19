@@ -1,6 +1,8 @@
 .container {
   flex-direction: column;
   display: flex;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 .banner {
@@ -8,16 +10,8 @@
   justify-content: space-between;
   border-bottom: red 1px dotted;
 
-  .tracker {
-    background-color: rgb(119, 112, 112);
-    color: #fff;
-    padding: 0 5px;
-    margin-bottom: 5px;
-    h4 {
-      justify-self: center;
-      font-family: "Lucida Grande", Geneva, Verdana, sans-serif;
-      margin-top: 2rem;
-    }
+  .Icon {
+    color: rgb(88, 88, 88);
   }
 
   img {
@@ -30,4 +24,56 @@
 
 .covidBanner {
   transform: scale(1.7);
+}
+
+//MediaQuery
+
+@media (max-width: 900px) {
+  .tracker {
+    font-size: 0.7rem;
+  }
+  .covidBanner {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 600px) {
+  .tracker {
+    font-size: 0.5rem;
+  }
+  .covidBanner {
+    transform: scale(0.6);
+  }
+}
+
+@media (max-width: 600px) {
+  .tracker {
+    font-size: 0.5rem;
+  }
+  .covidBanner {
+    transform: scale(1);
+    margin-left: -10px;
+  }
+
+  .banner {
+    img {
+      width: auto;
+      height: 25px;
+    }
+
+    .Icon {
+      margin-right: 5px;
+      margin-top: 8px;
+    }
+  }
+}
+
+//Themes
+.darkMode {
+  .Icon {
+    color: rgb(218, 218, 51);
+  }
+  .banner {
+    border-bottom: rgb(221, 221, 221) 1px dotted;
+  }
 }
