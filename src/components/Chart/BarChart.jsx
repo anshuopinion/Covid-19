@@ -56,6 +56,11 @@ const BarChart = ({
               },
               ticks: {
                 fontColor: theme ? "#fff" : "#000",
+                callback: (value) => {
+                  if (value >= 100) return value / 1000 + "k";
+                  else return value;
+                },
+                fontSize: 10,
               },
             },
           ],

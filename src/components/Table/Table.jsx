@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { fetchDis } from "../../api";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import styles from "./Table.module.scss";
-const Table = ({ stateName, theme }) => {
+
+const FunTable = ({ stateName, theme }) => {
   const [fetchedDis, setFetchedDis] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
@@ -14,37 +17,41 @@ const Table = ({ stateName, theme }) => {
     <div className={theme ? styles.darkMode : styles.lightMode}>
       <div className={styles.container}>
         <h3>District Infected By Covid-19 in {stateName}</h3>
-        <table className={styles.contentTable}>
-          <thead>
-            <tr>
-              <th>District</th>
-              <th>Confirmed</th>
-              <th>Active</th>
-              <th>Recovered</th>
-              <th>Deaths</th>
-            </tr>
-          </thead>
+        <Table className={styles.contentTable}>
+          <Thead>
+            <Tr>
+              <Th>District</Th>
+              <Th>Confirmed</Th>
+              <Th>Active</Th>
+              <Th>Recovered</Th>
+              <Th>Deaths</Th>
+            </Tr>
+          </Thead>
           {fetchedDis.map((each, j) => {
             if (each.state === stateName) {
               return (
-                <tbody key={j}>
+                <Tbody key={j}>
                   {each.districtData.map((disData, i) => (
-                    <tr key={i}>
-                      <td className={styles.dis}>{disData.district}</td>
-                      <td>{disData.confirmed}</td>
-                      <td>{disData.active}</td>
-                      <td>{disData.recovered}</td>
-                      <td>{disData.deceased}</td>
-                    </tr>
+                    <Tr key={i}>
+                      <Td className={styles.dis}>{disData.district}</Td>
+                      <Td>
+                        {disData.confirmed === 0 ? "-" : disData.confirmed}
+                      </Td>
+                      <Td>{disData.active === 0 ? "-" : disData.active}</Td>
+                      <Td>
+                        {disData.recovered === 0 ? "-" : disData.recovered}
+                      </Td>
+                      <Td>{disData.deceased === 0 ? "-" : disData.deceased}</Td>
+                    </Tr>
                   ))}
-                </tbody>
+                </Tbody>
               );
             }
-            return <tbody key={j}></tbody>;
+            return <Tbody key={j}></Tbody>;
           })}
-        </table>
+        </Table>
       </div>
     </div>
   ) : null;
 };
-export default Table;
+export default FunTable;

@@ -73,8 +73,12 @@ const LineChart = ({ theme }) => {
         responsive: true,
 
         legend: {
-          display: false,
-          labels: { fontColor: theme ? "#fff" : "#000", fontSize: 10 },
+          display: true,
+          labels: {
+            fontColor: theme ? "#fff" : "#000",
+            fontSize: 10,
+            maxWidth: 5,
+          },
         },
         scales: {
           yAxes: [
@@ -88,11 +92,33 @@ const LineChart = ({ theme }) => {
               ticks: {
                 maxTicksLimit: 5,
                 fontColor: theme ? "#fff" : "#000",
+                callback: (value) => {
+                  if (value >= 100) return value / 1000 + "k";
+                  else return value;
+                },
               },
             },
           ],
           xAxes: [
             {
+              type: "time",
+              time: {
+                unit: "day",
+                tooltipFormat: "MMM DD",
+                stepSize: 7,
+                displayFormats: {
+                  millisecond: "MMM DD",
+                  second: "MMM DD",
+                  minute: "MMM DD",
+                  hour: "MMM DD",
+                  day: "MMM DD",
+                  week: "MMM DD",
+                  month: "MMM DD",
+                  quarter: "MMM DD",
+                  year: "MMM DD",
+                },
+              },
+
               gridLines: {
                 display: true,
                 color: theme ? "#fff" : "#000",

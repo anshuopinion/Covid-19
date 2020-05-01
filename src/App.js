@@ -62,6 +62,7 @@ body{
   background-color:${(props) =>
     props.theme.mode === true ? "#202040" : "#fff"};
   color::${(props) => (props.theme.mode === true ? "#fff" : "#202040")};
+  transition: ${() => " background-color 250ms ease-in , color 300ms ease-out"};
 }
 `;
 
