@@ -14,8 +14,9 @@ select {
   background-size: 3rem;
   color: #000;
   border-radius: 0.4rem;
-
-  width: 55rem;
+  margin-bottom: 2rem;
+  width: 90%;
+  font-size: larger;
 }
 
 .selectorContainer {
@@ -39,7 +40,6 @@ select {
 
 @media (max-width: 900px) {
   select {
-    width: 35rem;
     background-size: 2.5rem;
   }
   .selectorContainer {
@@ -51,8 +51,7 @@ select {
 }
 @media (max-width: 600px) {
   select {
-    width: 9rem;
-    font-size: 0.5rem;
+    font-size: 1rem;
     background-size: 1rem;
     padding: 1rem 1rem 0.4rem 0.2rem;
   }

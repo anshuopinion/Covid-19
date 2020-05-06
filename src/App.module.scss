@@ -16,11 +16,20 @@
   .linechart {
     grid-area: linechart;
   }
+
+  .zones {
+    border: 1px solid red;
+    width: 100px;
+    height: 50px;
+    overflow: auto;
+  }
   .cards {
     grid-area: cards;
   }
   .spicker {
     grid-area: spicker;
+    margin-bottom: 3rem;
+    color: red;
   }
 
   .barChart {

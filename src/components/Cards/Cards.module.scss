@@ -21,7 +21,6 @@ $box-shadow: 0 3px 6px 0 $black;
     justify-content: center;
     .card {
       width: 15rem;
-
       align-self: center;
       box-shadow: $box-shadow;
       border-radius: 5px;
@@ -34,6 +33,29 @@ $box-shadow: 0 3px 6px 0 $black;
         }
         .counter {
           font-size: 3rem;
+          animation: blinkingText 5000ms infinite;
+
+          @keyframes blinkingText {
+            0% {
+              transform: scale(0.7);
+            }
+            20% {
+              transform: scale(0.85);
+            }
+            40% {
+              transform: scale(1);
+            }
+
+            60% {
+              transform: scale(1);
+            }
+            80% {
+              transform: scale(0.85);
+            }
+            100% {
+              transform: scale(0.7);
+            }
+          }
         }
         .daily {
           font-size: 1.5rem;
@@ -54,6 +76,8 @@ $box-shadow: 0 3px 6px 0 $black;
 }
 .deaths {
   color: $Deaths;
+  .counter {
+  }
 }
 .recovered {
   color: $Recovered;

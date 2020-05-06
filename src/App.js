@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./App.module.scss";
 import Banner from "./components/Banner/Banner";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+
 import {
   Cards,
   LineChart,
@@ -9,12 +10,25 @@ import {
   Footer,
   BarChart,
   Table,
+  Zone,
+  ToggleButton,
 } from "./components";
 import { fetchData } from "./api";
-const App = () => {
+
+const GlobalStyle = createGlobalStyle`
+body{
+  background-color:${(props) =>
+    props.theme.mode === true ? "#202040" : "#fff"};
+  color::${(props) => (props.theme.mode === true ? "#fff" : "#202040")};
+  transition: ${() => " background-color 250ms ease-in , color 300ms ease-out"};
+}
+`;
+
+function App() {
   const [data, setData] = useState([]);
   const [stateName, setStateName] = useState("");
   const [theme, setTheme] = useState(getThemeMode());
+  const [chartType, setChartType] = useState(4);
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -57,48 +71,54 @@ const App = () => {
     }
   };
 
-  const GlobalStyle = createGlobalStyle`
-body{
-  background-color:${(props) =>
-    props.theme.mode === true ? "#202040" : "#fff"};
-  color::${(props) => (props.theme.mode === true ? "#fff" : "#202040")};
-  transition: ${() => " background-color 250ms ease-in , color 300ms ease-out"};
-}
-`;
+  //change chart
+
+  const changeChart = (value) => {
+    setChartType(value);
+  };
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
-      <GlobalStyle />
-      <div
-        className={
-          (styles.container, theme ? styles.darkMode : styles.lightMode)
-        }
-      >
-        <div className={styles.banner}>
-          <Banner setTheme={setTheme} theme={theme} />
-        </div>
-        <div className={styles.linechart}>
-          <LineChart theme={theme} />
-        </div>
-        <div className={styles.cards}>
-          <Cards data={data} theme={theme} />
-        </div>
-        <div className={styles.tabled}>
-          <Table stateName={stateName} theme={theme} />
-        </div>
-        <div className={styles.spicker}>
-          <Spicker handleStateChange={handleStateChange} theme={theme} />
-        </div>
-        <div className={styles.barChart}>
-          <BarChart data={data} theme={theme} />
-        </div>
+      <>
+        <GlobalStyle />
+        <div
+          className={
+            (styles.container, theme ? styles.darkMode : styles.lightMode)
+          }
+        >
+          <div className={styles.banner}>
+            <Banner setTheme={setTheme} theme={theme} />
+          </div>
+          <div>
+            <Zone />
+          </div>
+          <div className={styles.linechart}>
+            <LineChart theme={theme} chartType={chartType} />
+          </div>
+          <div>
+            <ToggleButton changeChart={changeChart} theme={theme} />
+          </div>
+          <div className={styles.cards}>
+            <Cards data={data} theme={theme} />
+          </div>
+          <div className={styles.spicker}>
+            <Spicker handleStateChange={handleStateChange} theme={theme} />
+          </div>
+          <div className={styles.barChart}>
+            <BarChart data={data} theme={theme} />
+          </div>
 
-        <div className={styles.footer}>
-          <Footer theme={theme} />
+          <div className={styles.tabled}>
+            <Table stateName={stateName} theme={theme} />
+          </div>
+
+          <div className={styles.footer}>
+            <Footer theme={theme} />
+          </div>
         </div>
-      </div>
+      </>
     </ThemeProvider>
   );
-};
+}
 
 export default App;

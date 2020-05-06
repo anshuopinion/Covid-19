@@ -1,6 +1,7 @@
 import axios from "axios";
 const url1 = "https://api.covid19india.org/data.json";
 const url2 = "https://api.covid19india.org/v2/state_district_wise.json";
+const url3 = "https://api.covid19india.org/zones.json";
 export const fetchData = async (modifiedData) => {
   if (modifiedData) {
     const {
@@ -104,5 +105,18 @@ export const fetchDis = async () => {
     return data;
   } catch (error) {
     return error;
+  }
+};
+
+export const fetchZone = async () => {
+  try {
+    const {
+      data: {
+        zones: [...zonesArray],
+      },
+    } = await axios.get(`${url3}`);
+    return zonesArray;
+  } catch (error) {
+    console.log(error);
   }
 };

@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  button {
+    color: rgb(255, 255, 255);
+    border: 1px rgb(27, 27, 27) solid;
+    border-radius: 5px;
+    width: 22%;
+    padding: 2px 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      background-color: rgb(255, 255, 255);
+      color: rgb(37, 37, 37);
+      transform: translateY(-7px);
+      border: 1px solid rgb(27, 27, 27);
+    }
+    &:focus {
+      background-color: white;
+      color: black;
+      transform: translateY(-7px);
+      box-shadow: rgb(27, 27, 27);
+      border: 1px solid rgb(27, 27, 27);
+    }
+  }
+  .confirmed {
+    background-color: rgb(0, 0, 255);
+    &:hover {
+      box-shadow: 0px 15px 20px rgba(0, 0, 255, 0.4);
+      border: 1px solid rgb(41, 44, 255);
+    }
+    &:focus {
+      box-shadow: 0px 15px 20px rgba(0, 0, 255, 0.4);
+      border: 1px solid rgb(41, 44, 255);
+    }
+  }
+  .recovered {
+    background-color: rgb(0, 255, 0);
+    &:hover {
+      box-shadow: 0px 15px 20px rgba(0, 255, 0, 0.4);
+      border: 1px solid rgb(0, 255, 0);
+    }
+    &:focus {
+      box-shadow: 0px 15px 20px rgba(0, 255, 0, 0.4);
+      border: 1px solid rgb(0, 255, 0);
+    }
+  }
+  .deaths {
+    background-color: rgb(255, 0, 0);
+    &:hover {
+      box-shadow: 0px 15px 20px rgba(255, 0, 0, 0.4);
+      border: 1px solid rgb(255, 0, 0);
+    }
+    &:focus {
+      box-shadow: 0px 15px 20px rgba(255, 0, 0, 0.4);
+      border: 1px solid rgb(255, 0, 0);
+    }
+  }
+  .active {
+    background-color: rgb(255, 145, 0);
+    &:hover {
+      box-shadow: 0px 15px 20px rgba(255, 145, 0, 0.4);
+      border: 1px solid rgb(255, 145, 0);
+    }
+    &:focus {
+      box-shadow: 0px 15px 20px rgba(255, 145, 0, 0.4);
+      border: 1px solid rgb(255, 145, 0);
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    button {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    button {
+      font-size: 0.6rem;
+      width: 22%;
+    }
+  }
+}
+
+.darkMode {
+  .container {
+    button {
+      color: rgb(82, 82, 82);
+      border: 1px rgb(70, 70, 70) solid;
+    }
+    .confirmed {
+      color: rgb(221, 219, 219);
+      &:hover {
+        color: rgb(70, 69, 69);
+      }
+      &:focus {
+        color: rgb(66, 65, 65);
+      }
+    }
+  }
+}
+.lightMode {
+}
