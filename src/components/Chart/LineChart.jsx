@@ -51,6 +51,8 @@ const LineChart = ({ theme, chartType }) => {
 
   const lineChartList = [
     {
+      axesColor: "rgba(0,0,255,1)",
+
       datasets: [
         {
           data: confirmed,
@@ -63,6 +65,8 @@ const LineChart = ({ theme, chartType }) => {
       ],
     },
     {
+      axesColor: "rgba(255, 145, 0, 1)",
+
       datasets: [
         {
           data: active,
@@ -75,6 +79,8 @@ const LineChart = ({ theme, chartType }) => {
       ],
     },
     {
+      axesColor: "rgba(0,255,0,1)",
+
       datasets: [
         {
           data: recovered,
@@ -87,6 +93,8 @@ const LineChart = ({ theme, chartType }) => {
       ],
     },
     {
+      axesColor: "rgba(255,0,0,1)",
+
       datasets: [
         {
           data: deceased,
@@ -98,6 +106,7 @@ const LineChart = ({ theme, chartType }) => {
       ],
     },
     {
+      axesColor: "#747574",
       datasets: [
         {
           data: confirmed,
@@ -142,73 +151,81 @@ const LineChart = ({ theme, chartType }) => {
   });
 
   const lineChart = dates.length
-    ? filteredChart.map((lineData, i) => (
-        <Line
-          key={i}
-          data={{
-            labels: dates,
-            datasets: lineData.datasets,
-          }}
-          options={{
-            responsive: true,
-            title: {},
-            legend: {
-              display: false,
-            },
-            scales: {
-              yAxes: [
-                {
-                  gridLines: {
-                    display: true,
-                    color: theme ? "#fff" : "#000",
-                  },
+    ? filteredChart.map((lineData, i) => {
+        const axesColor = lineData.axesColor;
 
-                  position: "right",
-                  ticks: {
-                    maxTicksLimit: 5,
-                    fontColor: theme ? "#fff" : "#000",
-                    callback: (value) => {
-                      if (value >= 100) return value / 1000 + "k";
-                      else return value;
+        return (
+          <Line
+            className={styles.LineChart}
+            key={i}
+            data={{
+              labels: dates,
+              datasets: lineData.datasets,
+            }}
+            options={{
+              responsive: true,
+              title: {},
+              legend: {
+                display: false,
+              },
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      display: true,
+                      lineWidth: 3,
+                      color: axesColor,
+                    },
+
+                    position: "right",
+                    ticks: {
+                      maxTicksLimit: 5,
+
+                      fontColor: axesColor,
+                      callback: (value) => {
+                        if (value >= 100) return value / 1000 + "k";
+                        else return value;
+                      },
                     },
                   },
-                },
-              ],
-              xAxes: [
-                {
-                  type: "time",
-                  time: {
-                    unit: "day",
-                    tooltipFormat: "MMM DD",
-                    stepSize: 7,
-                    displayFormats: {
-                      millisecond: "MMM DD",
-                      second: "MMM DD",
-                      minute: "MMM DD",
-                      hour: "MMM DD",
-                      day: "MMM DD",
-                      week: "MMM DD",
-                      month: "MMM DD",
-                      quarter: "MMM DD",
-                      year: "MMM DD",
+                ],
+                xAxes: [
+                  {
+                    type: "time",
+                    time: {
+                      unit: "day",
+                      tooltipFormat: "MMM DD",
+                      stepSize: 7,
+                      displayFormats: {
+                        millisecond: "MMM DD",
+                        second: "MMM DD",
+                        minute: "MMM DD",
+                        hour: "MMM DD",
+                        day: "MMM DD",
+                        week: "MMM DD",
+                        month: "MMM DD",
+                        quarter: "MMM DD",
+                        year: "MMM DD",
+                      },
+                    },
+
+                    gridLines: {
+                      display: true,
+                      lineWidth: 3,
+                      color: axesColor,
+                    },
+
+                    ticks: {
+                      maxTicksLimit: 10,
+                      fontColor: axesColor,
                     },
                   },
-
-                  gridLines: {
-                    display: true,
-                    color: theme ? "#fff" : "#000",
-                  },
-
-                  ticks: {
-                    maxTicksLimit: 10,
-                    fontColor: theme ? "#fff" : "#000",
-                  },
-                },
-              ],
-            },
-          }}
-        />
-      ))
+                ],
+              },
+            }}
+          />
+        );
+      })
     : null;
 
   return (

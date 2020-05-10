@@ -12,6 +12,7 @@ import {
   Table,
   Zone,
   ToggleButton,
+  RecentUpdates,
 } from "./components";
 import { fetchData } from "./api";
 
@@ -90,8 +91,12 @@ function App() {
             <Banner setTheme={setTheme} theme={theme} />
           </div>
           <div>
+            <RecentUpdates />
+          </div>
+          <div>
             <Zone />
           </div>
+
           <div className={styles.linechart}>
             <LineChart theme={theme} chartType={chartType} />
           </div>
@@ -111,7 +116,7 @@ function App() {
           <div className={styles.tabled}>
             <Table stateName={stateName} theme={theme} />
           </div>
-
+          <div></div>
           <div className={styles.footer}>
             <Footer theme={theme} />
           </div>

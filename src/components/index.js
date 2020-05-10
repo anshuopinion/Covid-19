@@ -1,4 +1,5 @@
 export { default as Cards } from "./Cards/Cards";
+export { default as RecentUpdates } from "./RecentUpdates/RecentUpdates";
 export { default as LineChart } from "./Chart/LineChart";
 export { default as ToggleButton } from "./ToggleButton/ToggleButton";
 export { default as BarChart } from "./Chart/BarChart";
