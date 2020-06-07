@@ -1,103 +1,146 @@
-.Container {
-  max-width: 800px;
-
-  margin: 0 auto;
-
-  h2 {
-    text-align: center;
-    margin: 0;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-
-  h3 {
-    text-align: center;
-    color: blue;
-    margin: 0;
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  .UpdateContainer {
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      width: 0px;
-      display: none;
-    }
-    -ms-overflow-style: none;
-
+.MainBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  .BtnRecent {
+    align-items: center;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #555555;
+    padding: 5px 25px;
     border-radius: 10px;
+    border: none;
 
-    border: 2px solid blue;
-    height: 30vh;
-    overflow-y: scroll;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    .Updates {
-      display: flex;
+    &:hover {
+      color: #555555;
+      background-color: rgb(228, 253, 138);
+    }
 
-      justify-content: space-between;
-      border-bottom: 1px #000 solid;
+    animation: blinkingText 5000ms infinite;
 
-      h4 {
-        margin-left: 30px;
-        text-align: start;
+    @keyframes blinkingText {
+      0% {
+        transform: scale(1.2);
       }
-      p {
-        margin-right: 30px;
-        border-radius: 10px;
-        background: rgba(0, 0, 255, 0.6);
-        padding: 5px 10px;
-        text-transform: uppercase;
-        color: #fff;
-        font-size: 0.8rem;
+      20% {
+        transform: scale(1.1);
+      }
+      40% {
+        transform: scale(1);
+      }
+
+      60% {
+        transform: scale(1);
+      }
+      80% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1.2);
       }
     }
   }
-}
-
-@media (max-width: 750px) {
   .Container {
+    max-width: 800px;
+
+    margin: 0 auto;
+
+    h2 {
+      text-align: center;
+      margin: 0;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      text-align: center;
+      color: blue;
+      margin: 0;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
     .UpdateContainer {
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        width: 0px;
+        display: none;
+      }
+      -ms-overflow-style: none;
+
+      border-radius: 10px;
+
+      border: 2px solid blue;
+      height: 30vh;
+      overflow-y: scroll;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       .Updates {
+        display: flex;
+
+        justify-content: space-between;
+        border-bottom: 1px #000 solid;
+
         h4 {
-          font-size: 0.9rem;
-          margin-left: 10px;
-          width: 60%;
+          margin-left: 30px;
+          text-align: start;
         }
-        div {
-          // margin-left: 100px;
-          p {
-            font-size: 0.7rem;
-            margin-right: 5px;
+        p {
+          margin-right: 30px;
+          border-radius: 10px;
+          background: rgba(0, 0, 255, 0.6);
+          padding: 5px 10px;
+          text-transform: uppercase;
+          color: #fff;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 750px) {
+    .Container {
+      .UpdateContainer {
+        .Updates {
+          h4 {
+            font-size: 0.9rem;
+            margin-left: 10px;
+            width: 60%;
+          }
+          div {
+            // margin-left: 100px;
+            p {
+              font-size: 0.7rem;
+              margin-right: 5px;
+            }
           }
         }
       }
     }
   }
-}
 
-@media (max-width: 400px) {
-  .Container {
-    h2 {
-      font-size: 1.2rem;
-    }
-    h3 {
-      font-size: 1.1rem;
-    }
-    .UpdateContainer {
-      .Updates {
-        h4 {
-          font-size: 0.8rem;
-          margin-left: 10px;
-          width: 60%;
-        }
-        div {
-          // margin-left: 100px;
-          p {
-            font-size: 0.6rem;
-            margin-right: 5px;
+  @media (max-width: 400px) {
+    .Container {
+      h2 {
+        font-size: 1.2rem;
+      }
+      h3 {
+        font-size: 1.1rem;
+      }
+      .UpdateContainer {
+        .Updates {
+          h4 {
+            font-size: 0.8rem;
+            margin-left: 10px;
+            width: 60%;
+          }
+          div {
+            // margin-left: 100px;
+            p {
+              font-size: 0.6rem;
+              margin-right: 5px;
+            }
           }
         }
       }

@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { fetchRecentUpdates } from "../../api/index";
 import { formatDistance, format } from "date-fns";
 import styles from "./RecentUpdates.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 const RecentUpdates = () => {
   const [fetchedRecentUpdates, setFetchedRecentUpdates] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
   useEffect(() => {
     const fetchAPI = async () => {
       setFetchedRecentUpdates(await fetchRecentUpdates());
@@ -19,9 +22,12 @@ const RecentUpdates = () => {
     })
     .reverse();
 
-  return (
+  const showUpdates = () => {
+    setIsUpdate(!isUpdate);
+  };
+
+  const updates = (
     <div className={styles.Container}>
-      <h2>Recent Updates</h2>
       <h3 className={styles.CurrentDate}>{format(new Date(), `d MMM`)}</h3>
       <div className={styles.UpdateContainer}>
         {filteredRecentUpdates.map((recentUpdate, i) => {
@@ -42,6 +48,18 @@ const RecentUpdates = () => {
           );
         })}
       </div>
+    </div>
+  );
+
+  return (
+    <div className={styles.MainBox}>
+      <button className={styles.BtnRecent} onClick={showUpdates}>
+        Recent Updates{"   "}
+        <i>
+          <FontAwesomeIcon icon={faBell} />
+        </i>
+      </button>
+      {isUpdate ? updates : null}
     </div>
   );
 };
